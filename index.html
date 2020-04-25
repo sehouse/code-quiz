@@ -15,32 +15,44 @@
 
 <body>
 
-    <div class="grid">
+    <div class="quiz-container">
 
         <div id="quiz">
 
             <h1>Scott's JS Quiz!</h1>
 
-            <hr>
+            <hr class="separate">
 
-            <p id="quiz-question"></p>
+            <div id="intro">
+                <p>Here is a quiz based on the JavaScript coding language. There are 10 questions, and each question has
+                    4 possible answers. You have 100 seconds to complete the quiz. Every incorrect answer will subtract
+                    time from the clock. Try for a high score!</p>
 
-            <div class="buttons">
-
-                <button id="choice-one"><span id="answer-one"></span></button>
-
-                <button id="choice-two"><span id="answer-two"></span></button>
-
-                <button id="choice-three"><span id="answer-three"></span></button>
-
-                <button id="choice-four"><span id="answer-four"></span></button>
-
+                <button id="start-button"><span>Start Game!</span></button>
             </div>
 
+            <div id="quiz-content">
+
+                <p id="quiz-question"></p>
+
+                <div class="buttons">
+
+                    <button id="choice-one"><span id="answer-one"></span></button>
+
+                    <button id="choice-two"><span id="answer-two"></span></button>
+
+                    <button id="choice-three"><span id="answer-three"></span></button>
+
+                    <button id="choice-four"><span id="answer-four"></span></button>
+
+                </div>
+            </div>
         </div>
 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
