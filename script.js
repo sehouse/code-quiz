@@ -17,7 +17,7 @@ var questions = [
         correct: "D"
     },
     {
-        question: "If we want to use the browser to say something to the user, we would use:?",
+        question: "If we want to use the browser to say something to the user, we would use: ?",
         answerA: "alert()",
         answerB: "heyYou()",
         answerC: "listen()",
@@ -26,12 +26,12 @@ var questions = [
     },
 
     {
-        question: "If we want to use the browser to say something to the user, we would use:?",
-        answerA: "alert()",
-        answerB: "heyYou()",
-        answerC: "listen()",
-        answerD: "navi()",
-        correct: "A"
+        question: "What function combines the text of two strings and returns a new string?",
+        answerA: "add()",
+        answerB: "insert()",
+        answerC: "append()",
+        answerD: "concat()",
+        correct: "D"
     },
 
     {
@@ -44,12 +44,12 @@ var questions = [
     },
 
     {
-        question: "If we want to use the browser to say something to the user, we would use:?",
-        answerA: "alert()",
-        answerB: "heyYou()",
-        answerC: "listen()",
-        answerD: "navi()",
-        correct: "A"
+        question: "What is a DOM?",
+        answerA: "The best friend in Gears",
+        answerB: "Document Object Model",
+        answerC: "Dig Only Mud",
+        answerD: "Down On Main",
+        correct: "B"
     },
 
     {
@@ -88,8 +88,6 @@ var questions = [
         correct: "D"
     }
 
-
-
 ]
 
 var lastQuestion = (questions.length) - 1;
@@ -101,9 +99,10 @@ var score = 0
 
 $("#start-button").on("click", startGame);
 
+//A function to control what happens when the start button is clicked, hiding some HTML elements, starting the timer, and displaying the questions.
 function startGame() {
+
     $("#intro").hide();
-    $("#nav").show();
     $("#quiz-content").show();
     showQuestion();
     timerStart();
@@ -111,24 +110,29 @@ function startGame() {
 }
 
 function timerStart() {
+
     gameTime = 100;
     $("#timeLeft").text(gameTime);
 
     gameTimer = setInterval(function () {
+
         gameTime--;
         $("#timeLeft").text(gameTime);
 
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
             gameOver();
+
         }
+
     }, 1000);
+
 }
 
 function gameOver() {
+
     clearInterval(gameTimer);
     $("#quiz-content").hide();
-    $("#nav").hide();
     $("#intro").show();
 
     var quizContent = `
@@ -138,17 +142,23 @@ function gameOver() {
         <button onclick="setScore()">Set score!</button>`;
 
     document.getElementById("intro").innerHTML = quizContent;
+
 }
 
 function setScore() {
+
     localStorage.setItem("highscore", score);
     localStorage.setItem("highscoreName", document.getElementById('name').value);
+
     getScore();
+
 }
 
 function getScore() {
+
     $("#intro").show();
     $("#quiz-content").hide();
+
     var quizContent = `
     <h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
     <h1>` + localStorage.getItem("highscore") + `</h1><br> 
@@ -161,6 +171,7 @@ function getScore() {
 }
 
 function clearScore() {
+
     localStorage.setItem("highscore", "");
     localStorage.setItem("highscoreName", "");
 
@@ -168,6 +179,7 @@ function clearScore() {
 }
 
 function resetGame() {
+
     clearInterval(gameTimer);
     score = 0;
     questionCounter = 0;
@@ -179,6 +191,7 @@ function resetGame() {
 }
 
 function showQuestion() {
+
     var questionText = questions[questionCounter];
     $("#quiz-question").text(questionText.question);
     $("#answer-one").text(questionText.answerA);
@@ -188,25 +201,23 @@ function showQuestion() {
 }
 
 function checkAnswer(answer) {
+
     if (answer === questions[questionCounter].correct) {
         score += 10;
 
     }
+
     else {
         gameTime -= 5;
     }
+
     if (questionCounter < lastQuestion) {
         questionCounter++;
         showQuestion();
     }
+
     else {
         gameOver();
     }
 
 }
-
-//start screen is nested in #intro
-//quiz elements are nested in #quiz-content
-//quiz question is #quiz-question
-//buttons are #choice-one, #choice-two, #choice-three, #choice-four
-//button spans are #answer-one, #answer-two, #answer-three, #answer-four

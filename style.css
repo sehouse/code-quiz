@@ -1,7 +1,89 @@
-#nav{
-    display:none;
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+#nav {
+    display: block;
+    background-color: navy;
+    color: yellow;
+    display: inline-block;
+    width: 98vw;
+    border: 3px solid yellow;
+    border-radius: 5px;
+    margin: 6px;
+}
+
+a:link{
+    color:yellow;
+}
+
+a:visited{
+    color:yellow;
 }
 
 #quiz-content{
     display: none;
+}
+
+hr.separate {
+    margin-bottom: 25px;
+    border: 1px solid gainsboro;
+}
+
+body {
+background-color: navy;
+}
+
+.quiz-container {
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+background-color: navy;
+padding: 10px 50px 50px 50px;
+border-radius: 50px;
+border: 2px solid yellow;
+box-shadow: 10px 15px 5px yellow;
+}
+
+.quiz-container h1 {
+    background-color: navy;
+    font-size: 60px;
+    text-align: center;
+    color: yellow;
+    padding: 2px 0px;
+    border-radius: 50px;
+}
+
+.quiz-container #intro{
+    font-size: 30px;
+    color: yellow;
+}
+
+.quiz-container #quiz-question {
+font-size: 30px;
+color: yellow;
+}
+
+button {
+    background-color:yellow;
+    color: navy;
+    width: 250px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin: 10px 40px 10px 0px;
+    padding: 10px 10px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #FFFF66;
+}
+
+button:focus{
+    outline: 0;
 }
