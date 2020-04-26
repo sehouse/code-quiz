@@ -11,6 +11,6 @@
 * An assigned score for the user, based on the amount of questions correctly answered.
 * A 100 second game timer.
 
-<img src=""
+<img src="https://github.com/sehouse/code-quiz/blob/master/Assets/scott-house-code-quiz.jpg?raw=true"
      alt="Scott House Code Quiz"
      style="float: center" />
