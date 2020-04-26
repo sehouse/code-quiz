@@ -1,28 +1,91 @@
 var questions = [
 
     {
-        question: "what is the first letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
-        correct: "A"
-    },
-    {
-        question: "what is the second letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
+        question: "Where in the body do we put the JQuery link?",
+        answerA: "Middle",
+        answerB: "Bottom",
+        answerC: "Top",
+        answerD: "Nowhere",
         correct: "B"
     },
     {
-        question: "what is the third letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
+        question: "What tag do we use to write JavaScript?",
+        answerA: "<html>",
+        answerB: "<footer>",
+        answerC: "<body>",
+        answerD: "<script>",
+        correct: "D"
+    },
+    {
+        question: "If we want to use the browser to say something to the user, we would use:?",
+        answerA: "alert()",
+        answerB: "heyYou()",
+        answerC: "listen()",
+        answerD: "navi()",
+        correct: "A"
+    },
+
+    {
+        question: "If we want to use the browser to say something to the user, we would use:?",
+        answerA: "alert()",
+        answerB: "heyYou()",
+        answerC: "listen()",
+        answerD: "navi()",
+        correct: "A"
+    },
+
+    {
+        question: "what syntax would we use to link external JS?",
+        answerA: "<script name ='script.js'",
+        answerB: "<script href ='script.js'",
+        answerC: "<script src ='script.js'",
+        answerD: "<script ref ='script.js'",
         correct: "C"
+    },
+
+    {
+        question: "If we want to use the browser to say something to the user, we would use:?",
+        answerA: "alert()",
+        answerB: "heyYou()",
+        answerC: "listen()",
+        answerD: "navi()",
+        correct: "A"
+    },
+
+    {
+        question: "How would we write a comment in JS?",
+        answerA: "**comment**",
+        answerB: "//comment",
+        answerC: "^^comment",
+        answerD: "#comment",
+        correct: "B"
+    },
+
+    {
+        question: "What is the number of the first value in an array?",
+        answerA: "0",
+        answerB: "1",
+        answerC: "2",
+        answerD: "3",
+        correct: "A"
+    },
+
+    {
+        question: "What do we use to check the value of a variable in JS?",
+        answerA: "console()",
+        answerB: "log()",
+        answerC: "console.log()",
+        answerD: "print()",
+        correct: "C"
+    },
+
+    {
+        question: "How would we write a function in JS?",
+        answerA: "function = ()",
+        answerB: "function := ()",
+        answerC: "function : ()",
+        answerD: "function ()",
+        correct: "D"
     }
 
 
