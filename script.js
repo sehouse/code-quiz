@@ -1,3 +1,5 @@
+// An array of questions, using objects to give the elements of the question.
+
 var questions = [
 
     {
@@ -90,16 +92,20 @@ var questions = [
 
 ]
 
+//Global Variables used in the quiz.
+
 var lastQuestion = (questions.length) - 1;
 var questionCounter = 0;
 var gameTimer = 0;
 var gameTime = 0;
 var score = 0
 
+//JQuery to start the game when the start button is clicked.
 
 $("#start-button").on("click", startGame);
 
-//A function to control what happens when the start button is clicked, hiding some HTML elements, starting the timer, and displaying the questions.
+// A function to control what happens when the start button is clicked, hiding some HTML elements, starting the timer, and displaying the questions.
+
 function startGame() {
 
     $("#intro").hide();
@@ -109,86 +115,7 @@ function startGame() {
 
 }
 
-function timerStart() {
-
-    gameTime = 100;
-    $("#timeLeft").text(gameTime);
-
-    gameTimer = setInterval(function () {
-
-        gameTime--;
-        $("#timeLeft").text(gameTime);
-
-        if (timeLeft <= 0) {
-            clearInterval(gameTimer);
-            gameOver();
-
-        }
-
-    }, 1000);
-
-}
-
-function gameOver() {
-
-    clearInterval(gameTimer);
-    $("#quiz-content").hide();
-    $("#intro").show();
-
-    var quizContent = `
-        <h2>Game over!</h2>
-        <h3>You got a ` + score + `!</h3>
-        <input type="text" id="name" placeholder="Initials"> 
-        <button onclick="setScore()">Set score!</button>`;
-
-    document.getElementById("intro").innerHTML = quizContent;
-
-}
-
-function setScore() {
-
-    localStorage.setItem("highscore", score);
-    localStorage.setItem("highscoreName", document.getElementById('name').value);
-
-    getScore();
-
-}
-
-function getScore() {
-
-    $("#intro").show();
-    $("#quiz-content").hide();
-
-    var quizContent = `
-    <h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
-    <h1>` + localStorage.getItem("highscore") + `</h1><br> 
-    
-    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
-    
-    `;
-
-    document.getElementById("intro").innerHTML = quizContent;
-}
-
-function clearScore() {
-
-    localStorage.setItem("highscore", "");
-    localStorage.setItem("highscoreName", "");
-
-    resetGame();
-}
-
-function resetGame() {
-
-    clearInterval(gameTimer);
-    score = 0;
-    questionCounter = 0;
-    gameTimer = 0;
-    gameTime = 0;
-
-    $("#timeLeft").text(gameTime);
-    startGame();
-}
+// A function that displays the questions in the HTML body and buttons.
 
 function showQuestion() {
 
@@ -199,6 +126,8 @@ function showQuestion() {
     $("#answer-three").text(questionText.answerC);
     $("#answer-four").text(questionText.answerD);
 }
+
+// A function that will check the user's answer to a question to determine if it is correct.
 
 function checkAnswer(answer) {
 
@@ -220,4 +149,96 @@ function checkAnswer(answer) {
         gameOver();
     }
 
+}
+
+// A function to control the timer and end the game if it hits 0.
+
+function timerStart() {
+
+    gameTime = 100;
+    $("#timeLeft").text(gameTime);
+
+    gameTimer = setInterval(function () {
+
+        gameTime--;
+        $("#timeLeft").text(gameTime);
+
+        if (gameTime <= 0) {
+            clearInterval(gameTimer);
+            gameOver();
+
+        }
+
+    }, 1000);
+
+}
+
+// A function that changes the body of the quiz to the Game Over screen.
+
+function gameOver() {
+
+    clearInterval(gameTimer);
+    $("#quiz-content").hide();
+    $("#intro").show();
+
+    var quizContent = `
+        <h2>Game over!</h2>
+        <h3>You got a ` + score + `!</h3>
+        <input type="text" id="name" placeholder="Initials"> 
+        <button onclick="setScore()">Set score!</button>`;
+
+    document.getElementById("intro").innerHTML = quizContent;
+
+}
+
+// A function that saves the score to the local storage.
+
+function setScore() {
+
+    localStorage.setItem("highscore", score);
+    localStorage.setItem("highscoreName", document.getElementById('name').value);
+
+    getScore();
+
+}
+// A function that shows the user's high score.
+
+function getScore() {
+
+    $("#intro").show();
+    $("#quiz-content").hide();
+
+    var quizContent = `
+    <h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
+    <h1>` + localStorage.getItem("highscore") + `</h1><br> 
+    
+    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
+    
+    `;
+
+    document.getElementById("intro").innerHTML = quizContent;
+}
+
+// A function that will clear the user's high score.
+
+function clearScore() {
+
+    localStorage.setItem("highscore", "");
+    localStorage.setItem("highscoreName", "");
+
+    resetGame();
+}
+
+// A function that will reset the user's game.
+
+function resetGame() {
+
+    clearInterval(gameTimer);
+    score = 0;
+    questionCounter = 0;
+    gameTimer = 0;
+    gameTime = 0;
+
+    $("#timeLeft").text(gameTime);
+    startGame();
 }
