@@ -15,6 +15,24 @@
 
 <body>
 
+    <div id="nav">
+
+        <div class="left">
+
+            <a onclick="getScore()" href="#">
+                <h4>View High Scores</h4>
+            </a>
+
+        </div>
+
+        <div class="right">
+
+            <h4>Time: <span id="timeLeft">0</span></h4>
+
+        </div>
+
+    </div>
+
     <div class="quiz-container">
 
         <div id="quiz">
@@ -37,13 +55,13 @@
 
                 <div class="buttons">
 
-                    <button id="choice-one" onclick="checkAnswer('1')"><span id="answer-one"></span></button>
+                    <button id="choice-one" onclick="checkAnswer('1A')"><span id="answer-one"></span></button>
 
-                    <button id="choice-two" onclick="checkAnswer('2')"><span id="answer-two"></span></button>
+                    <button id="choice-two" onclick="checkAnswer('B')"><span id="answer-two"></span></button>
 
-                    <button id="choice-three" onclick="checkAnswer('3')"><span id="answer-three"></span></button>
+                    <button id="choice-three" onclick="checkAnswer('C')"><span id="answer-three"></span></button>
 
-                    <button id="choice-four" onclick="checkAnswer('4')"><span id="answer-four"></span></button>
+                    <button id="choice-four" onclick="checkAnswer('D')"><span id="answer-four"></span></button>
 
                 </div>
             </div>

@@ -1,5 +1,39 @@
-var score = 0;
+var questions = [
+
+    {
+        question: "what is the first letter of the alphabet?",
+        answerA: "a",
+        answerB: "b",
+        answerC: "c",
+        answerD: "d",
+        correct: "A"
+    },
+    {
+        question: "what is the second letter of the alphabet?",
+        answerA: "a",
+        answerB: "b",
+        answerC: "c",
+        answerD: "d",
+        correct: "B"
+    },
+    {
+        question: "what is the third letter of the alphabet?",
+        answerA: "a",
+        answerB: "b",
+        answerC: "c",
+        answerD: "d",
+        correct: "C"
+    }
+
+
+
+]
+
+var lastQuestion = (questions.length) - 1;
+var questionsCorrect = 0;
 var questionCounter = 0;
+var gameTimer = 0;
+var gameTime = 0;
 
 
 $("#start-button").on("click", startGame);
@@ -8,7 +42,24 @@ function startGame() {
     $("#intro").hide();
     $("#quiz-content").show();
     showQuestion();
+    timerStart();
 
+}
+
+function timerStart() {
+    gameTime = 100;
+    $("#timeLeft").text(gameTime);
+
+    gameTimer = setInterval(function () {
+        gameTime--;
+        $("#timeLeft").text(gameTime);
+
+        if (timeLeft <= 0) {
+            clearInterval(gameTimer);
+            endGame();
+        }
+    }, 1000);
+    next();
 }
 
 function showQuestion() {
@@ -20,41 +71,16 @@ function showQuestion() {
     $("#answer-four").text(questionText.answerD);
 }
 
-function checkAnswer() {
-    if (questionCounter < questions.length) {
+function checkAnswer(answer) {
+    if (answer === questions[questionCounter].correct) {
+        questionsCorrect++;
+
+    }
+    if (questionCounter < lastQuestion) {
         questionCounter++;
         showQuestion();
     }
 }
-
-var questions = [
-
-    {
-        question: "what is the first letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
-        correct: "1"
-    },
-    {
-        question: "what is the second letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
-        correct: "2"
-    },
-    {
-        question: "what is the third letter of the alphabet?",
-        answerA: "a",
-        answerB: "b",
-        answerC: "c",
-        answerD: "d",
-        correct: "3"
-    }
-]
-
 
 //start screen is nested in #intro
 //quiz elements are nested in #quiz-content
