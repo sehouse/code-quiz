@@ -40,6 +40,7 @@ $("#start-button").on("click", startGame);
 
 function startGame() {
     $("#intro").hide();
+    $("#nav").show();
     $("#quiz-content").show();
     showQuestion();
     timerStart();
@@ -62,6 +63,13 @@ function timerStart() {
     next();
 }
 
+function gameOver() {
+    clearInterval(gameTimer);
+    $("#quiz-content").hide();
+    $("#quiz-over").show();
+    $("#final-score").text(score);
+
+}
 function showQuestion() {
     var questionText = questions[questionCounter];
     $("#quiz-question").text(questionText.question);
@@ -80,6 +88,10 @@ function checkAnswer(answer) {
         questionCounter++;
         showQuestion();
     }
+    else {
+        gameOver();
+    }
+
 }
 
 //start screen is nested in #intro

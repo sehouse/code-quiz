@@ -1,3 +1,11 @@
+#nav{
+    display:none;
+}
+
 #quiz-content{
     display: none;
+}
+
+#quiz-over{
+    display:none;
 }
