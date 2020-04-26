@@ -34,6 +34,7 @@ var questionsCorrect = 0;
 var questionCounter = 0;
 var gameTimer = 0;
 var gameTime = 0;
+var score = 0
 
 
 $("#start-button").on("click", startGame);
@@ -57,19 +58,45 @@ function timerStart() {
 
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
-            endGame();
+            gameOver();
         }
     }, 1000);
-    next();
 }
 
 function gameOver() {
     clearInterval(gameTimer);
     $("#quiz-content").hide();
-    $("#quiz-over").show();
-    $("#final-score").text(score);
+    $("#intro").show();
 
+    var quizContent = `
+        <h2>Game over!</h2>
+        <h3>You got a ` + score + ` /100!</h3>
+        <input type="text" id="name" placeholder="First name"> 
+        <button onclick="setScore()">Set score!</button>`;
+
+    document.getElementById("intro").innerHTML = quizContent;
 }
+
+function setScore() {
+    localStorage.setItem("highscore", score);
+    localStorage.setItem("highscoreName", document.getElementById('name').value);
+    getScore();
+}
+
+function getScore() {
+    $("#intro").show();
+    $("#quiz-content").hide();
+    var quizContent = `
+    <h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
+    <h1>` + localStorage.getItem("highscore") + `</h1><br> 
+    
+    <button onclick="clearScore()">Clear score!</button><button onclick="resetGame()">Play Again!</button>
+    
+    `;
+
+    document.getElementById("intro").innerHTML = quizContent;
+}
+
 function showQuestion() {
     var questionText = questions[questionCounter];
     $("#quiz-question").text(questionText.question);
@@ -82,6 +109,7 @@ function showQuestion() {
 function checkAnswer(answer) {
     if (answer === questions[questionCounter].correct) {
         questionsCorrect++;
+        score += 10;
 
     }
     if (questionCounter < lastQuestion) {
